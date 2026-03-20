@@ -11,6 +11,12 @@ else:
     VS_INIT = "echo Not initializing VS environment."
 
 OPTIMIZE = "prod_trimming" in sys.argv
+USE_UPX = "upx_pack" in sys.argv
+
+if USE_UPX:
+    UPX_COMMAND = "upx --best dist/main.exe"
+else:
+    UPX_COMMAND = "echo UPX packing disabled"
 
 class CLCommand:
     cur: str
@@ -116,7 +122,7 @@ def main():
     os.makedirs("dist", exist_ok=True)
     compile_web()
     # deprecation is for nerds
-    os.system(" && ".join([CD, VS_INIT, RES, CL.build()]))
+    os.system(" && ".join([CD, VS_INIT, RES, CL.build(), UPX_COMMAND]))
 
 
 if __name__ == "__main__":
