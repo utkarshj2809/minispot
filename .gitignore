@@ -1,0 +1,9 @@
+.vscode/
+dist/
+wv2/
+main.obj
+resources.res
+web_compiled.html
+
+web/dist
+web/node_modules

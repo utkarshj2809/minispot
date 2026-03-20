@@ -1,0 +1,10 @@
+import { mount } from "svelte";
+import "./app.css";
+import Root from "./Root.svelte";
+
+const target = document.getElementById("app");
+if (!target) throw new Error("Could not locate root element.");
+
+const app = mount(Root, { target });
+
+export default app;
